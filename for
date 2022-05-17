@@ -1,7 +1,7 @@
 max = 5
-a = "*"
-b = " "
-for i in range(1,max):
+a = "*" #다이아몬드 출력 문자
+b = " " #다이아몬드 공백 문자
+for i in range(1,max): #다이아몬드 상단
     for j in range(max - i):
         print(a,end="")
     for k in range(i*2-1):
@@ -9,7 +9,7 @@ for i in range(1,max):
     for l in range(max-i):
         print(a,end="")
     print("")
-for i in range(max,0,-1):
+for i in range(max,0,-1): #다이아몬드 하단
     for j in range(max - i):
         print(a,end="")
     for k in range(i*2-1):
@@ -19,6 +19,7 @@ for i in range(max,0,-1):
     print("")
 
 print("")
+#format를 이용한 방법(공백 문자 변경 불가능)
 for i in range(1,max * 2 , 2):
     print("{:^10}".format("*" * i))
 for i in range(0,max * 2 , 2):
