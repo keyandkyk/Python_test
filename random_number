@@ -1,0 +1,33 @@
+#입력 할 값의 범위를 랜덤으로 설정함
+ranstart = random.randrange(0,4) #랜덤 입력할 숫자 범위의 앞자리
+ranend = random.randrange(5,9) #랜덤 입력할 숫자 범위의 뒷자리
+#ranstart, ranend 변수 검증(양수, 정수로 변환하고 ranend가 ranstart보다 작을시 이를 고침)
+ranstart = int(abs(ranstart))
+if ranstart > ranend:
+    ranend = ranstart + abs(ranend) #ranend가 ranstart보다 작으면 ranstart와 ranend의 절대값을 더해서 ranend가 더 작은 값이 되지 않게 함
+ranend = int(ranend)
+
+num = [] #입력할 숫자를 랜덤 입력시킬 리스트 변수 선언
+delnum = random.randrange(ranstart,ranend) #num에 입력한 값 중 삭제할 값을 랜덤 선정
+lenge = int(random.random()) + 10 #num 개수의 최소 길이값을 입력. 10은 넘어가게 함.
+i = lenge #밑의 nummax와 연동하여 num 개수가 nummax를 넘지 않게 하기 위한 임력한 num 입력 개수 값
+nummax = 30 #num 랜덤입력 횟수 최대값을 설정(컴퓨팅 성능 등의 문제로 인하여 한계 설정 필요시 설정)
+#delnum이 두개 이상 입력되게 하기 위해 미리 두개를 입력함
+num.append(delnum)
+num.append(delnum)
+#최소한 lenge이상의 개수가 입력되게 하기위해 미리 lenge 개수만큼 입력함
+for i in range(1, lenge):
+    num.append(random.randrange(ranstart,ranend))
+#random.choice함수로 True, False가 랜덤으로 나타나게 하여 랜덤개수만큼 입력되게 함
+while i <= nummax: #while (random.choice([True, False])):
+    num.append(random.randrange(ranstart,ranend))
+    i += 1
+    if False:#(random.choice([True, False])):
+        break
+random.shuffle(num)
+print(num)
+print("delnum : ",delnum)
+
+while delnum in num:
+    num.remove(delnum)
+print(num)
